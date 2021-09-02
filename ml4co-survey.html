@@ -1,0 +1,620 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-fences-math .MathJax_SVG_Display, .md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: visible; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none 0s ease 0s; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-require-zoom-fix foreignobject { font-size: var(--mermaid-font-zoom); }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-math .MathJax_SVG_Display { margin-top: 8px; cursor: default; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+
+
+
+/*!
+Misty Light
+Brought to you with ❤️ by E-Tiger Studio, 2017-2020
+https://github.com/etigerstudio/typora-misty-theme
+ */
+:root {
+  --control-text-color: #777;
+  --side-bar-bg-color: #f6f8fa
+}
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: subpixel-antialiased
+}
+body {
+  font-family: "SF UI Text",-apple-system,-apple-system-body,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  color: #24292e;
+  line-height: 1.5
+}
+#write {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 20px 30px 100px
+}
+#write > ol:first-child,
+#write > ul:first-child {
+  margin-top: 30px
+}
+body > :first-child {
+  margin-top: 0!important
+}
+body > :last-child {
+  margin-bottom: 0!important
+}
+a {
+  color: #4183c4
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+  margin-top: 1.8rem;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+  cursor: text;
+  color: #142331
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+  text-decoration: none
+}
+h1 code,
+h1 tt,
+h2 code,
+h2 tt,
+h3 code,
+h3 tt,
+h4 code,
+h4 tt,
+h5 code,
+h5 tt,
+h6 code,
+h6 tt {
+  font-size: inherit
+}
+h1 {
+  text-align: center;
+  padding-bottom: .3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+  margin: 1em auto 1.2em
+}
+h1:after {
+  border-bottom: 2px dashed #afec9e;
+  content: '';
+  width: 100px;
+  display: block;
+  margin: .2em auto 0;
+  height: 2px
+}
+h2 {
+  font-size: 1.75em;
+  padding-left: 9px;
+  line-height: 1.4;
+  border-left: 6px solid #cce5ff
+}
+h3 {
+  font-size: 1.5em;
+  line-height: 1.43
+}
+h3:before {
+  border-radius: 50%;
+  background-color: #9ed0ff;
+  content: '';
+  width: 6px;
+  display: inline-block;
+  height: 6px;
+  vertical-align: middle;
+  margin-bottom: .18em;
+  margin-right: 8px
+}
+#write > h3.md-focus:before,
+#write > h4.md-focus:before {
+  background-color: transparent;
+  width: auto;
+  height: auto
+}
+h4 {
+  font-size: 1.25em
+}
+h4:before {
+  background-color: #9ed0ff;
+  content: '';
+  width: 6px;
+  display: inline-block;
+  height: 2px;
+  vertical-align: middle;
+  margin-bottom: .18em;
+  margin-right: 8px
+}
+h5 {
+  font-size: 1em
+}
+h6 {
+  font-size: 1em;
+  color: #777
+}
+blockquote,
+dl,
+ol,
+p,
+table,
+ul {
+  margin: .8em 0
+}
+li > ol,
+li > ul {
+  margin: 0
+}
+hr {
+  height: .25em;
+  padding: 0;
+  margin: 24px 0;
+  background-color: #e1e4e8;
+  border: 0
+}
+a:first-child h1,
+a:first-child h2,
+a:first-child h3,
+a:first-child h4,
+a:first-child h5,
+a:first-child h6,
+body>h1:first-child,
+body>h1:first-child+h2,
+body>h2:first-child,
+body>h3:first-child,
+body>h4:first-child,
+body>h5:first-child,
+body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0
+}
+h1 p,
+h2 p,
+h3 p,
+h4 p,
+h5 p,
+h6 p {
+  margin-top: 0
+}
+li p.first {
+  display: inline-block
+}
+ol,
+ul {
+  padding-left: 30px
+}
+ol:first-child,
+ul:first-child {
+  margin-top: 0
+}
+ol:last-child,
+ul:last-child {
+  margin-bottom: 0
+}
+blockquote {
+  border-left: 4px dotted #e5e8e8;
+  padding: 0 12px;
+  color: #444;
+  font-size: .9em
+}
+blockquote blockquote {
+  padding-right: 0
+}
+table {
+  padding: 0;
+  word-break: initial
+}
+table tr {
+  border-top: 1px solid #dadfe6;
+  margin: 0;
+  padding: 0
+}
+table.md-table tr:nth-child(2n) {
+  background-color: #fafbfc
+}
+table tr td,
+table tr th {
+  border: 1px solid #dadfe6;
+  text-align: left;
+  margin: 0;
+  padding: 6px 13px
+}
+table tr td:first-child,
+table tr th:first-child {
+  margin-top: 0
+}
+table tr td:last-child,
+table tr th:last-child {
+  margin-bottom: 0
+}
+.CodeMirror-gutters {
+  border-right: 1px solid #ddd
+}
+.md-fences,
+code,
+tt {
+  font-size: 90%;
+  border-radius: 3px;
+  font-family: "SF Mono",Consolas,"Liberation Mono",Menlo,Courier,monospace
+}
+code,
+tt {
+  margin: 0 2px;
+  padding: 2px 4px;
+  background-color: #e2f0ff
+}
+.md-fences {
+  background-color: #f6f8fa;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  padding: 12px 1em
+}
+.md-task-list-item > input {
+  margin-left: -1.45em;
+  margin-top: calc(1em - 10px)
+}
+#write pre.md-meta-block {
+  padding: 1rem;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7faf6;
+  border: 0;
+  border-radius: 3px;
+  color: #777;
+  margin-top: 0!important
+}
+.mathjax-block > .code-tooltip {
+  bottom: .375rem
+}
+#write > h3.md-focus:before {
+  left: -1.5625rem;
+  top: .375rem
+}
+#write>h4.md-focus:before,
+#write>h5.md-focus:before,
+#write>h6.md-focus:before {
+  left: -1.5625rem;
+  top: .285714286rem
+}
+.md-image > .md-meta {
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  font-family: "SF Mono",Consolas,"Liberation Mono",Courier,monospace;
+  padding: 2px 4px 0;
+  font-size: .9em;
+  color: inherit
+}
+.md-tag {
+  color: inherit
+}
+.md-toc {
+  margin-top: 20px;
+  padding-bottom: 20px
+}
+.sidebar-tabs {
+  border-bottom: none
+}
+#typora-quick-open {
+  border: 1px solid #ddd;
+  background-color: #f8f8f8
+}
+#typora-quick-open-item {
+  background-color: #fafafa;
+  border-color: #fefefe #e5e5e5 #e5e5e5 #eee;
+  border-style: solid;
+  border-width: 1px
+}
+.typora-quick-open-item {
+  padding-top: 3px
+}
+.typora-quick-open-list {
+  margin-top: 4px
+}
+.typora-quick-open-item-path {
+  margin-top: -2px
+}
+#md-notification:before {
+  top: 10px
+}
+.on-focus-mode blockquote {
+  border-left-color: rgba(85,85,85,.12)
+}
+.context-menu,
+.megamenu-content,
+footer,
+header {
+  font-family: "SF UI Text",-apple-system,-apple-system-body,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"
+}
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state {
+  visibility: visible
+}
+.mac-seamless-mode #typora-sidebar {
+  background-color: var(--side-bar-bg-color)
+}
+.md-lang {
+  color: #b4654d
+}
+.pin-outline #outline-content .outline-active strong,
+.pin-outline .outline-active {
+  color: #232323;
+  font-weight: 600
+}
+.outline-label {
+  color: #646464;
+  font-weight: 400
+}
+.file-list-item-summary {
+  font-family: "SF UI Text",-apple-system,-apple-system-body,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"
+}
+@media print {
+  body {
+    font-weight: 400
+  }
+  b,
+  strong {
+    font-weight: 600
+  }
+  pre,
+  table {
+    page-break-inside: avoid
+  }
+  pre {
+    word-wrap: break-word
+  }
+}
+body {
+  font-weight: 400;
+  -webkit-font-smoothing: unset
+}
+b,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong {
+  font-weight: 600
+}
+h1,
+table tr th {
+  font-weight: 400
+}
+.file-list-item-file-name {
+  font-weight: 500
+}
+
+ :root {--mermaid-font-zoom:1.25em ;} 
+</style><title>papers-on-ml4co</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='papers-on-ml4co'><span>Papers on ML4CO</span></h1><div>
+    <center style="color:#fc6423; font-size:24px; text-align:center;">Gemini Light<center>
+	<center style="font-size:14px;"><a herf="mailto:wtfly2018@163.com">wtfly2018@163.com</a></center>
+</center></center></div><p><code>Lasted Update: 2021/08/20</code>
+<code>Current Version: v0.2 (P)</code></p><h2 id='preface'><span>Preface</span></h2><p><span>This is a brief survey on machine learning for combinatorial optimization, a fascinating and significant topic. We mainly collect relevant papers from top conferences, classify them into several categories by method types, and indicate additional information.</span></p><p><span>It&#39;s inevitable to have omissions or errors during the discussion for the limitation of the author&#39;s knowledge. Welcome to feedback them you found.</span></p><h3 id='to-do-list'><span>To-Do List</span></h3><ul><li><span>Continue to collect high-quality papers on ml4co.</span></li><li><span>Add formal definitions and practical applications of every problem.</span></li><li><span>Specify problem modelling in representative papers.</span></li><li><span>Provide more detail for each model.</span></li><li><span>Supply more analysis of development. </span></li></ul><h3 id='combinatorial-optimization-problems'><span>Combinatorial Optimization Problems</span></h3><ul><li><strong><span>TSP</span></strong><span>: Travelling Salesman Problem</span></li><li><strong><span>VRP</span></strong><span>: Vehicular Routing Problem</span></li><li><strong><span>MAXCUT</span></strong><span>: Maximum Cut</span></li><li><strong><span>MVC</span></strong><span>: Minimum Vertex Cover</span></li><li><strong><span>MIS</span></strong><span>: Maximal Independent Set</span></li><li><strong><span>MC</span></strong><span>: Maximal Clique</span></li><li><strong><span>MCP</span></strong><span>: Maximum Coverage Problem</span></li><li><strong><span>SAT</span></strong><span>: Satisfiability</span></li><li><strong><span>GC</span></strong><span>: Graph Coloring</span></li><li><strong><span>JSSP</span></strong><span>: Job Shop Scheduling Problem</span></li><li><strong><span>3D-BPP</span></strong><span>: 3D Bin-Packing Problem</span></li><li><strong><span>MIP/MILP</span></strong><span>: Mixed Integer (Linear) Programming</span></li></ul><h3 id='categories-of-machine-learning'><span>Categories of Machine Learning</span></h3><ul><li><strong><span>SL</span></strong><span>: Supervised Learning</span></li><li><strong><span>UL</span></strong><span>: Unsupervised Learning</span></li><li><strong><span>RL</span></strong><span>: Reinforcement Learning </span><em><span>(Including Imitation Learning, IL)</span></em></li></ul><h3 id='components-of-neural-network'><span>Components of Neural Network</span></h3><ul><li><strong><span>RNN</span></strong><span>: Recurrent Neural Network </span><em><span>(Including LSTM, GRU)</span></em></li><li><strong><span>CNN</span></strong><span>: Convolutional Neural Network</span></li><li><strong><span>GNN</span></strong><span>: Graph Neural Network </span><em><span>(Including Graph Embedding, GE)</span></em></li><li><strong><span>Attention</span></strong><span> </span><em><span>(Including Self-Attention)</span></em></li><li><strong><span>Transformer</span></strong></li></ul><h2 id='content'><a href='#contentcontent'><span>Content</span></a></h2><table>
+<tbody><tr><td><a href="#survey">Survey</a></td></tr>
+<tr><td><a href="#analysis">Analysis</a></td></tr>
+<tr><td><a href="#end-to-end">End-to-end</a></td></tr>
+  <tr><td>  <a href="#rnn/attention-based">RNN/Attention-based</a></td></tr>
+  <tr><td>  <a href="#gnn-based">GNN-based</a></td></tr>
+  <tr><td>  <a href="#other">Other</a></td></tr>
+<tr><td><a href="#local-search">Local Search</a></td></tr>
+<tr><td><a href="#b&amp;b-based">B&amp;B-based</a></td></tr>
+</tbody></table><h2 id='survey'><a href='#contentcontent'><span>Survey</span></a></h2><ol start='' ><li><p><strong><span>On Learning and Branching: a Survey</span></strong></p><ul><li><code>Publication</code><span>: TOP 2017</span></li><li><code>Keyword</code><span>: Branch</span></li><li><code>Link</code><span>: </span><a href='http://cerc-datascience.polymtl.ca/wp-content/uploads/2017/04/CERC_DS4DM_2017_004-1.pdf'><span>paper</span></a></li></ul></li><li><p><strong><span>Boosting Combinatorial Problem Modeling with Machine Learning</span></strong></p><ul><li><code>Publication</code><span>: IJCAI 2018</span></li><li><code>Keyword</code><span>: ML</span></li><li><code>Link</code><span>: </span><a href='https://arxiv.org/abs/1807.05517'><span>arXiv</span></a></li></ul></li><li><p><strong><span>A Review of Combinatorial Optimization with Graph Neural Networks</span></strong></p><ul><li><code>Publication</code><span>: BigDIA 2019</span></li><li><code>Keyword</code><span>: GNN</span></li><li><code>Link</code><span>: </span><a href='https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=8802843'><span>paper</span></a></li></ul></li><li><p><strong><span>Learning Graph Matching and Related Combinatorial Optimization Problems</span></strong></p><ul><li><code>Publication</code><span>: IJCAI 2020</span></li><li><code>Keyword</code><span>: GNN, Graph Matching</span></li><li><code>Link</code><span>: </span><a href='https://www.ijcai.org/proceedings/2020/0694.pdf'><span>paper</span></a></li></ul></li><li><p><strong><span>Learning Combinatorial Optimization on Graphs: A Survey with Applications to Networking</span></strong></p><ul><li><code>Publication</code><span>: IEEE ACCESS 2020</span></li><li><code>Keyword</code><span>: GNN, Computer Network</span></li><li><code>Link</code><span>: </span><a href='https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=9125934'><span>paper</span></a></li></ul></li><li><p><strong><span>A Survey on Reinforcement Learning for Combinatorial Optimization</span></strong></p><ul><li><code>Publication</code><span>: arXiv 2020</span></li><li><code>Keyword</code><span>: RL</span></li><li><code>Link</code><span>: </span><a href='https://arxiv.org/abs/2008.12248v2'><span>arXiv</span></a></li></ul></li><li><p><strong><span>A Survey on Reinforcement Learning for Combinatorial Optimization</span></strong></p><ul><li><code>Publication</code><span>: arXiv 2020</span></li><li><code>Keyword</code><span>: RL</span></li><li><code>Link</code><span>: </span><a href='https://arxiv.org/abs/2008.12248v2'><span>arXiv</span></a></li></ul></li><li><p><strong><span>Reinforcement Learning for Combinatorial Optimization: A Survey</span></strong></p><ul><li><code>Publication</code><span>: arXiv 2020</span></li><li><code>Keyword</code><span>: RL</span></li><li><code>Link</code><span>: </span><a href='https://arxiv.org/abs/2003.03600'><span>arXiv</span></a></li></ul></li><li><p><strong><span>Graph Learning for Combinatorial Optimization: A Survey of State-of-the-Art</span></strong></p><ul><li><code>Publication</code><span>: Data Science and Engineering 2021</span></li><li><code>Keyword</code><span>: GNN</span></li><li><code>Link</code><span>: </span><a href='https://arxiv.org/abs/2008.12646'><span>arXiv</span></a></li></ul></li><li><p><strong><span>Combinatorial optimization and reasoning with graph neural networks</span></strong></p><ul><li><code>Publication</code><span>: arXiv 2021</span></li><li><code>Keyword</code><span>: GNN</span></li><li><code>Link</code><span>: </span><a href='https://arxiv.org/abs/2102.09544'><span>arXiv</span></a></li></ul></li></ol><h2 id='analysis'><a href='#contentcontent'><span>Analysis</span></a></h2><ol start='' ><li><p><strong><span>Learning to Branch</span></strong></p><ul><li><code>Publication</code><span>: ICML 2018</span></li><li><code>Keyword</code><span>: Branch</span></li><li><code>Link</code><span>: </span><a href='https://arxiv.org/abs/1803.10150'><span>arXiv</span></a></li></ul></li><li><p><strong><span>Approximation Ratios of Graph Neural Networks for Combinatorial Problems</span></strong></p><ul><li><code>Publication</code><span>: NeurIPS 2019</span></li><li><code>Keyword</code><span>: GNN</span></li><li><code>Link</code><span>: </span><a href='https://arxiv.org/abs/1905.10261'><span>arXiv</span></a></li></ul></li><li><p><strong><span>On Learning Paradigms for the Travelling Salesman Problem</span></strong></p><ul><li><code>Publication</code><span>: NeurIPS 2019 (Workshop)</span></li><li><code>Keyword</code><span>: RL vs SL</span></li><li><code>Link</code><span>: </span><a href='https://arxiv.org/abs/1910.07210'><span>arXiv</span></a></li></ul></li><li><p><strong><span>On the Difficulty of Generalizing Reinforcement Learning Framework for Combinatorial Optimization</span></strong></p><ul><li><code>Publication</code><span>: ICML 2021 (Workshop)</span></li><li><code>Keyword</code><span>: GNN</span></li><li><code>Link</code><span>: </span><a href='https://arxiv.org/abs/2108.03713'><span>arXiv</span></a></li></ul></li></ol><h2 id='end-to-end'><a href='#contentcontent'><span>End-to-end</span></a></h2><h3 id='rnnattention-based'><a href='#contentcontent'><span>RNN/Attention-based</span></a></h3><ol start='' ><li><p><strong><span>Pointer Networks</span></strong></p><ul><li><code>Publication</code><span>: NeurIPS 2015</span></li><li><code>CO-problem</code><span>: Finding planar convex hulls, computing Delaunay triangulations, TSP</span></li><li><code>ML-type</code><span>: SL</span></li><li><code>Component</code><span>: LSTM, Seq2Seq, Attention</span></li><li><code>Innovation</code><span>: Ptr-Net not only improve over sequence-to-sequence with input attention, but also allow us to generalize to </span><u><span>variable size output dictionaries</span></u><span>.</span></li><li><code>Link</code><span>: </span><a href='https://arxiv.org/abs/1506.03134'><span>arXiv</span></a></li><li><img src="C:\Users\Gemini向光性\AppData\Roaming\Typora\typora-user-images\image-20210815124017776.png" referrerpolicy="no-referrer" alt="image-20210815124017776"></li></ul></li><li><p><strong><span>Neural Combinatorial Optimization with Reinforcement Learning</span></strong></p><ul><li><code>Publication</code><span>: ICLR 2017</span></li><li><code>CO-problem</code><span>: TSP</span></li><li><code>ML-type</code><span>: RL (Actor-critic)</span></li><li><code>Component</code><span>: LSTM, Seq2Seq, Attention</span></li><li><code>Innovation</code><span>: This paper presents a framework to tackle combinatorial optimization problems using neural networks and </span><u><span>reinforcement learning</span></u><span>.</span></li><li><code>Link</code><span>: </span><a href='https://arxiv.org/abs/1611.09940'><span>arXiv</span></a></li><li><img src="C:\Users\Gemini向光性\AppData\Roaming\Typora\typora-user-images\image-20210815131544615.png" referrerpolicy="no-referrer" alt="image-20210815131544615"></li></ul></li><li><p><strong><span>Multi-Decoder Attention Model with Embedding Glimpse for Solving Vehicle Routing Problems</span></strong></p><ul><li><code>Publication</code><span>: AAAI 2021</span></li><li><code>CO-problem</code><span>: VRP, TSP</span></li><li><code>ML-type</code><span>: RL (REINFORCE)</span></li><li><code>Component</code><span>: Self-Attention</span></li><li><code>Innovation</code><span>: This paper proposes a Multi-Decoder Attention Model (MDAM) to train </span><u><span>multiple diverse policies</span></u><span>, which effectively increases the chance of finding good solutions compared with existing methods that train only one policy. A </span><u><span>customized beam search strategy</span></u><span> is designed to fully exploit the diversity of MDAM.</span></li><li><code>Link</code><span>: </span><a href='https://arxiv.org/abs/2012.10638'><span>arXiv</span></a></li><li><img src="C:\Users\Gemini向光性\AppData\Roaming\Typora\typora-user-images\image-20210816135657473.png" referrerpolicy="no-referrer" alt="image-20210816135657473"></li></ul></li><li><p><strong><span>Learning Improvement Heuristics for Solving Routing Problems</span></strong></p><ul><li><code>Publication</code><span>: TNNLS 2021</span></li><li><code>CO-problem</code><span>: TSP, VRP</span></li><li><code>ML-type</code><span>: RL (n-step Actor-Critic)</span></li><li><code>Component</code><span>: Self-Attention</span></li><li><code>Innovation</code><span>: This paper proposes a </span><u><span>self-attention based deep architecture</span></u><span> as the policy network to guide the selection of next solution.</span></li><li><code>Link</code><span>: </span><a href='https://arxiv.org/abs/1912.05784'><span>arXiv</span></a></li><li><img src="C:\Users\Gemini向光性\AppData\Roaming\Typora\typora-user-images\image-20210816171739141.png" referrerpolicy="no-referrer" alt="image-20210816171739141"></li></ul></li><li><p><strong><span>The Transformer Network for the Traveling Salesman Problem</span></strong></p><ul><li><code>Publication</code><span>: arXiv 2021</span></li><li><code>CO-problem</code><span>: TSP</span></li><li><code>ML-type</code><span>: RL</span></li><li><code>Component</code><span>: Transformer</span></li><li><code>Innovation</code><span>: This paper proposes to adapt the recent successful </span><u><span>Transformer architecture</span></u><span> originally developed for natural language processing to the combinatorial TSP.</span></li><li><code>Link</code><span>: </span><a href='https://arxiv.org/abs/2103.03012'><span>arXiv</span></a></li><li><img src="C:\Users\Gemini向光性\AppData\Roaming\Typora\typora-user-images\image-20210816161717118.png" referrerpolicy="no-referrer" alt="image-20210816161717118"></li></ul></li><li><p><strong><span>Matrix Encoding Networks for Neural Combinatorial Optimization</span></strong></p><ul><li><code>Publication</code><span>: arXiv 2021</span></li><li><code>CO-problem</code><span>: TSP</span></li><li><code>ML-type</code><span>: RL (REINFORCE)</span></li><li><code>Component</code><span>: Attention</span></li><li><code>Innovation</code><span>: MatNet is capable of </span><u><span>encoding matrix-style relationship data</span></u><span> found in many CO problems</span></li><li><code>Link</code><span>: </span><a href='https://arxiv.org/abs/2106.11113'><span>arXiv</span></a></li><li><img src="C:\Users\Gemini向光性\AppData\Roaming\Typora\typora-user-images\image-20210816173143328.png" referrerpolicy="no-referrer" alt="image-20210816173143328"></li></ul></li></ol><h3 id='gnn-based'><a href='#contentcontent'><span>GNN-based</span></a></h3><ol start='' ><li><p><strong><span>Learning Combinatorial Optimization Algorithms over Graphs</span></strong></p><ul><li><code>Publication</code><span>: NeurIPS 2017</span></li><li><code>CO-problem</code><span>: MVC, MAXCUT, TSP</span></li><li><code>ML-type</code><span>: RL (Q-learning)</span></li><li><code>Component</code><span>: GNN (structure2vec, S2V)</span></li><li><code>Innovation</code><span>:  This paper proposes a unique combination of reinforcement learning and </span><u><span>graph embedding</span></u><span> to address this challenge. The learned greedy policy behaves like a meta-algorithm that incrementally constructs a solution, and the action is determined by the output of a graph embedding network capturing the current state of the solution.</span></li><li><code>Link</code><span>: </span><a href='https://arxiv.org/abs/1704.01665'><span>arXiv</span></a></li><li><img src="C:\Users\Gemini向光性\AppData\Roaming\Typora\typora-user-images\image-20210815122727875.png" referrerpolicy="no-referrer" alt="image-20210815122727875"></li></ul></li><li><p><strong><span>Reinforcement Learning for Solving the Vehicle Routing Problem</span></strong></p><ul><li><code>Publication</code><span>: NeurIPS 2018</span></li><li><code>CO-problem</code><span>: VRP</span></li><li><code>ML-type</code><span>: RL</span></li><li><code>Component</code><span>: GNN (GCN)</span></li><li><code>Innovation</code><span>: This paper presents an end-to-end framework for solving the </span><u><span>Vehicle Routing Problem (VRP)</span></u><span> using reinforcement learning.</span></li><li><code>Link</code><span>: </span><a href='https://arxiv.org/abs/1802.04240'><span>arXiv</span></a></li><li><img src="C:\Users\Gemini向光性\AppData\Roaming\Typora\typora-user-images\image-20210815125454294.png" referrerpolicy="no-referrer" alt="image-20210815125454294"></li></ul></li><li><p><strong><span>Attention, Learn to Solve Routing Problems!</span></strong></p><ul><li><code>Publication</code><span>: NeurIPS 2018</span></li><li><code>CO-problem</code><span>: TSP, VRP</span></li><li><code>ML-type</code><span>: RL (REINFORCE+rollout baseline)</span></li><li><code>Component</code><span>: Attention, GNN</span></li><li><code>Innovation</code><span>: This paper proposes a model based on </span><u><span>attention layers</span></u><span> with benefits over the Pointer Network and we show how to train this model using REINFORCE with a simple baseline based on a deterministic greedy rollout, which we find is more efficient than using a value function.</span></li><li><code>Link</code><span>: </span><a href='https://arxiv.org/abs/1803.08475'><span>arXiv</span></a></li><li><img src="C:\Users\Gemini向光性\AppData\Roaming\Typora\typora-user-images\image-20210815133136779.png" referrerpolicy="no-referrer" alt="image-20210815133136779"></li></ul></li><li><p><strong><span>Learning to Solve NP-Complete Problems - A Graph Neural Network for Decision TSP</span></strong></p><ul><li><code>Publication</code><span>: AAAI 2019</span></li><li><code>CO-problem</code><span>: TSP</span></li><li><code>ML-type</code><span>: SL</span></li><li><code>Component</code><span>: RNN, GNN</span></li><li><code>Innovation</code><span>: This paper proposes </span><u><span>a GNN model where edges (embedded with their weights) communicate with vertices</span></u><span>.</span></li><li><code>Link</code><span>: </span><a href='https://arxiv.org/abs/1809.02721'><span>arXiv</span></a></li><li><img src="C:\Users\Gemini向光性\AppData\Roaming\Typora\typora-user-images\image-20210815133954824.png" referrerpolicy="no-referrer" alt="image-20210815133954824"></li></ul></li><li><p><strong><span>Learning a SAT Solver from Single-Bit Supervision</span></strong></p><ul><li><code>Publication</code><span>: ICLR 2019</span></li><li><code>CO-problem</code><span>: SAT</span></li><li><code>ML-type</code><span>: SL</span></li><li><code>Component</code><span>: GNN, LSTM</span></li><li><code>Innovation</code><span>: NeuroSAT enforces both </span><u><span>permutation invariance and negation invariance</span></u><span>.</span></li><li><code>Link</code><span>: </span><a href='https://arxiv.org/abs/1802.03685'><span>arXiv</span></a></li><li><img src="C:\Users\Gemini向光性\AppData\Roaming\Typora\typora-user-images\image-20210815135231623.png" referrerpolicy="no-referrer" alt="image-20210815135231623"></li><li><img src="C:\Users\Gemini向光性\AppData\Roaming\Typora\typora-user-images\image-20210815135755778.png" referrerpolicy="no-referrer" alt="image-20210815135755778"></li></ul></li><li><p><strong><span>End to end learning and optimization on graphs</span></strong></p><ul><li><code>Publication</code><span>: NeurIPS 2019</span></li><li><code>CO-problem</code><span>: MAXCUT</span></li><li><code>ML-type</code><span>: UL</span></li><li><code>Component</code><span>: GNN</span></li><li><code>Innovation</code><span>: This paper proposed a new approach CLUSTERNET  to this </span><u><span>decision-focused learning</span></u><span> problem: include </span><u><span>a differentiable solver for a simple proxy to the true</span></u><span>, difficult optimization problem and learn a representation that maps the difficult problem to the simpler one. (relax+differentiate)</span></li><li><code>Link</code><span>: </span><a href='https://arxiv.org/abs/1905.13732'><span>arXiv</span></a></li><li><img src="C:\Users\Gemini向光性\AppData\Roaming\Typora\typora-user-images\image-20210815143420270.png" referrerpolicy="no-referrer" alt="image-20210815143420270"></li></ul></li><li><p><strong><span>Efficiently Solving the Practical Vehicle Routing Problem: A Novel Joint Learning Approach</span></strong></p><ul><li><code>Publication</code><span>: KDD 2020</span></li><li><code>CO-problem</code><span>: VRP</span></li><li><code>ML-type</code><span>: SL, RL (REINFORCE+rollout baseline)</span></li><li><code>Component</code><span>: GCN</span></li><li><code>Innovation</code><span>: GCN-NPEC model is based on the graph convolutional network (GCN) with node feature (coordination and demand) and edge feature (the real distance between nodes) as input and embedded. </span><u><span>Separate decoders</span></u><span> are proposed to decode the representations of these two features. The output of one decoder is the supervision of the other decoder. This paper also proposes a strategy that </span><u><span>combines the reinforcement learning manner with the supervised learning manner</span></u><span> to train the model.</span></li><li><code>Link</code><span>: </span><a href='https://www.kdd.org/kdd2020/accepted-papers/view/efficiently-solving-the-practical-vehicle-routing-problem-a-novel-joint-lea'><span>paper</span></a></li><li><img src="C:\Users\Gemini向光性\AppData\Roaming\Typora\typora-user-images\image-20210816144127741.png" referrerpolicy="no-referrer" alt="image-20210816144127741"></li></ul></li><li><p><strong><span>Learning to Dispatch for Job Shop Scheduling via Deep Reinforcement Learning</span></strong></p><ul><li><code>Publication</code><span>: NeurIPS 2020</span></li><li><code>CO-problem</code><span>: JSSP</span></li><li><code>ML-type</code><span>: RL (PPO)</span></li><li><code>Component</code><span>: GNN</span></li><li><code>Innovation</code><span>: This paper </span><u><span>exploit the disjunctive graph representation of JSSP</span></u><span> , and propose a Graph Neural Network based scheme to embed the states encountered during solving. </span></li><li><code>Link</code><span>: </span><a href='https://arxiv.org/abs/2010.12367'><span>arXiv</span></a></li><li><img src="C:\Users\Gemini向光性\AppData\Roaming\Typora\typora-user-images\image-20210816170033736.png" referrerpolicy="no-referrer" alt="image-20210816170033736"></li></ul></li><li><p><strong><span>Learning to Solve Combinatorial Optimization Problems on Real-World Graphs in Linear Time</span></strong></p><ul><li><code>Publication</code><span>: arXiv 2020</span></li><li><code>CO-problem</code><span>: TSP, VRP</span></li><li><code>ML-type</code><span>: RL</span></li><li><code>Component</code><span>: GNN</span></li><li><code>Innovation</code><span>: This paper develops a new framework to </span><u><span>solve any combinatorial optimization problem over graphs that can be formulated as a single player game</span></u><span> defined by states, actions, and rewards, including minimum spanning tree, shortest paths, traveling salesman problem, and vehicle routing problem, problem, without expert knowledge.</span></li><li><code>Link</code><span>: </span><a href='https://arxiv.org/abs/2006.03750'><span>arXiv</span></a></li><li><img src="C:\Users\Gemini向光性\AppData\Roaming\Typora\typora-user-images\image-20210816150049627.png" referrerpolicy="no-referrer" alt="image-20210816150049627"></li></ul></li><li><p><strong><span>Combinatorial Optimization by Graph Pointer Networks and Hierarchical Reinforcement Learning</span></strong></p><ul><li><code>Publication</code><span>: AAAI 2020 (Workshop)</span></li><li><code>CO-problem</code><span>: TSP</span></li><li><code>ML-type</code><span>: Hierarchical RL</span></li><li><code>Component</code><span>: GNN</span></li><li><code>Innovation</code><span>: GPNs build upon </span><u><span>Pointer Networks</span></u><span> by introducing a </span><u><span>graph embedding layer</span></u><span> on the input, which captures relationships between nodes. Furthermore, to approximate solutions to constrained combinatorial optimization problems such as the TSP with time windows, we train </span><u><span>hierarchical GPNs (HGPNs) using RL</span></u><span>, which learns a hierarchical policy to find an optimal city permutation under constraints.</span></li><li><code>Link</code><span>: </span><a href='https://arxiv.org/abs/1911.04936'><span>arXiv</span></a></li><li><img src="C:\Users\Gemini向光性\AppData\Roaming\Typora\typora-user-images\image-20210816171353265.png" referrerpolicy="no-referrer" alt="image-20210816171353265"></li></ul></li><li><p><strong><span>A Bi-Level Framework for Learning to Solve Combinatorial Optimization on Graphs</span></strong></p><ul><li><code>Publication</code><span>: arXiv 2021</span></li><li><code>CO-problem</code><span>: Directed Acyclic Graph scheduling, Graph Edit Distance, Hamiltonian Cycle Problem</span></li><li><code>ML-type</code><span>: RL (PPO)</span></li><li><code>Component</code><span>: GNN, ResNet, Attention</span></li><li><code>Innovation</code><span>: This paper proposes a </span><u><span>bi-level framework</span></u><span> is developed with an upper-level learning method to optimize the graph (e.g. add, delete or modify edges in a graph), fused with a lower-level heuristic algorithm solving on the optimized graph. Such a bi-level approach </span><u><span>simplifies the learning on the original hard CO</span></u><span> and </span><u><span>can effectively mitigate the demand for model capacity</span></u><span>.</span></li><li><code>Link</code><span>: </span><a href='https://arxiv.org/abs/2106.04927'><span>arXiv</span></a></li><li><img src="C:\Users\Gemini向光性\AppData\Roaming\Typora\typora-user-images\image-20210816182855878.png" referrerpolicy="no-referrer" alt="image-20210816182855878"></li></ul></li><li><p><strong><span>SOLO: Search Online, Learn Offline for Combinatorial Optimization Problems</span></strong></p><ul><li><code>Publication</code><span>: arXiv 2021</span></li><li><code>CO-problem</code><span>: VRP, JSSP</span></li><li><code>ML-type</code><span>: RL (DQN, MCTS)</span></li><li><code>Component</code><span>: GNN</span></li><li><code>Innovation</code><span>: Learn Offline -&gt; DQN + Search Online -&gt; MCTS</span></li><li><code>Link</code><span>: </span><a href='https://arxiv.org/abs/2104.01646'><span>arXiv</span></a></li><li><img src="C:\Users\Gemini向光性\AppData\Roaming\Typora\typora-user-images\image-20210816163030736.png" referrerpolicy="no-referrer" alt="image-20210816163030736"></li></ul></li></ol><h3 id='other'><a href='#contentcontent'><span>Other</span></a></h3><ol start='' ><li><p><strong><span>Learning to Dispatch for Job Shop Scheduling via Deep Reinforcement Learning</span></strong></p><ul><li><code>Publication</code><span>: NeurIPS 2020</span></li><li><code>CO-problem</code><span>: VRP</span></li><li><code>ML-type</code><span>: RL</span></li><li><code>Component</code><span>: /</span></li><li><code>Innovation</code><span>:  </span><u><span>Policy evaluation with mixed-integer optimization</span></u><span>. At the policy evaluation step, they formulate the action selection problem from each state as a mixed-integer program, in which they combine the combinatorial structure of the action space with the neural architecture of the value function by adapting the branch-and-cut approach.</span></li><li><code>Link</code><span>: </span><a href='https://arxiv.org/abs/2010.12367'><span>arXiv</span></a></li></ul></li></ol><h2 id='local-search'><a href='#contentcontent'><span>Local Search</span></a></h2><ol start='' ><li><p><strong><span>Combinatorial Optimization with Graph Convolutional Networks and Guided Tree Search</span></strong></p><ul><li><code>Publication</code><span>: NeurIPS 2018</span></li><li><code>CO-problem</code><span>: MIS, MVC, MC, SAT</span></li><li><code>ML-type</code><span>: SL</span></li><li><code>Component</code><span>: GNN (GCN)</span></li><li><code>Innovation</code><span>: This paper proposes a model whose central component is a </span><u><span>graph convolutional network</span></u><span> that is trained to estimate the likelihood, for each vertex in a graph, of whether this vertex is part of the optimal solution. The network is designed and trained to </span><u><span>synthesize a diverse set of solutions</span></u><span>, which enables rapid exploration of the solution space via tree search.</span></li><li><code>Link</code><span>: </span><a href='https://arxiv.org/abs/1704.01665'><span>arXiv</span></a></li><li><img src="C:\Users\Gemini向光性\AppData\Roaming\Typora\typora-user-images\image-20210815124857154.png" referrerpolicy="no-referrer" alt="image-20210815124857154"></li></ul></li><li><p><strong><span>Learning to Perform Local Rewriting for Combinatorial Optimization</span></strong></p><ul><li><code>Publication</code><span>: NeurIPS 2019</span></li><li><code>CO-problem</code><span>: JSSP, VRP</span></li><li><code>ML-type</code><span>: RL (Actor-Critic)</span></li><li><code>Component</code><span>: LSTM</span></li><li><code>Innovation</code><span>: NeuRewriter  learns a policy to pick heuristics, and </span><u><span>rewrite local components of the current solution to iteratively improve it until convergence</span></u><span>. The policy factorizes into a region-picking and a rule-picking component, each of which parameterized by an NN trained with actor-critic in RL.</span></li><li><code>Link</code><span>: </span><a href='https://arxiv.org/abs/1810.00337'><span>arXiv</span></a></li><li><img src="C:\Users\Gemini向光性\AppData\Roaming\Typora\typora-user-images\image-20210816174005858.png" referrerpolicy="no-referrer" alt="image-20210816174005858"></li></ul></li><li><p><strong><span>A Learning-based Iterative Method for Solving Vehicle Routing Problems</span></strong></p><ul><li><p><code>Publication</code><span>: ICLR 2020</span></p></li><li><p><code>CO-problem</code><span>: VRP</span></p></li><li><p><code>ML-type</code><span>: RL (REINFORCE)</span></p></li><li><p><code>Component</code><span>: /</span></p></li><li><p><code>Innovation</code><span>:  “Learn to Improve” (L2I)</span></p><ul><li><span>hierarchical framework:  separate heuristic operators into two classes, namely </span><u><span>improvement operators and perturbation operators</span></u><span>. At each state, we choose the class first and then choose operators within the class. Learning from the current solution is made easier by focusing RL on the improvement operators only.</span></li><li><span>ensemble method: trains several RL policies at the same time, but with different state input features.</span></li></ul></li><li><p><code>Link</code><span>: </span><a href='https://openreview.net/forum?id=BJe1334YDH'><span>paper</span></a></p></li><li><p><img src="C:\Users\Gemini向光性\AppData\Roaming\Typora\typora-user-images\image-20210816174813049.png" referrerpolicy="no-referrer" alt="image-20210816174813049"></p></li></ul></li><li><p><strong><span>Exploratory Combinatorial Optimization with Reinforcement Learning</span></strong></p><ul><li><code>Publication</code><span>: AAAI 2020</span></li><li><code>CO-problem</code><span>: MAXCUT</span></li><li><code>ML-type</code><span>: RL (DQN)</span></li><li><code>Component</code><span>: GNN (MPNN)</span></li><li><code>Innovation</code><span>: ECO-DQN combines </span><u><span>S2V-DQN, Reversible Actions, Observation Tuning and Intermediate Rewards</span></u><span>.</span></li><li><code>Link</code><span>: </span><a href='https://arxiv.org/abs/1909.04063'><span>arXiv</span></a></li></ul></li><li><p><strong><span>Rewriting By Generating: Learn To Solve Large-Scale Vehicle Routing Problems</span></strong></p><ul><li><code>Publication</code><span>: ICLR 2021</span></li><li><code>CO-problem</code><span>: VRP</span></li><li><code>ML-type</code><span>: Hierarchical RL (REINFORCE)</span></li><li><code>Component</code><span>: LSTM, K-means, PCA</span></li><li><code>Innovation</code><span>: Inspired by the </span><u><span>classical idea of Divide-and-Conquer</span></u><span>, this paper presents a novel </span><u><span>Rewriting-by-Generating(RBG) framework with hierarchical RL agents</span></u><span> to solve large-scale VRPs. </span><u><span>RBG consists of a rewriter agent that refines the customer division globally and an elementary generator to infer regional solutions locally</span></u><span>.</span></li><li><code>Link</code><span>: </span><a href='https://openreview.net/forum?id=xxWl2oEvP2h'><span>paper</span></a></li><li><img src="C:\Users\Gemini向光性\AppData\Roaming\Typora\typora-user-images\image-20210816175009718.png" referrerpolicy="no-referrer" alt="image-20210816175009718"></li></ul><p><img src="C:\Users\Gemini向光性\AppData\Roaming\Typora\typora-user-images\image-20210816175223823.png" referrerpolicy="no-referrer" alt="image-20210816175223823"></p></li></ol><h2 id='bb-based'><a href='#contentcontent'><span>B&amp;B-based</span></a></h2><ol start='' ><li><p><strong><span>Learning to Search in Branch and Bound Algorithms</span></strong></p><ul><li><code>Publication</code><span>: NeurIPS 2014</span></li><li><code>CO-problem</code><span>: MILP</span></li><li><code>ML-type</code><span>: RL (Imitation learning)</span></li><li><code>Component</code><span>: /</span></li><li><code>Innovation</code><span>: This paper proposed an approach that </span><u><span>learns branch-and-bound by imitation learning</span></u><span>. (node selection policy and node pruning policy)</span></li><li><code>Link</code><span>: </span><a href='https://papers.nips.cc/paper/5495-learning-to-search-in-branch-and-bound-algorithms'><span>paper</span></a></li><li><img src="C:\Users\Gemini向光性\AppData\Roaming\Typora\typora-user-images\image-20210816160633086.png" referrerpolicy="no-referrer" alt="image-20210816160633086"></li></ul></li><li><p><strong><span>Learning to Branch in Mixed Integer Programming</span></strong></p><ul><li><code>Publication</code><span>: AAAI 2016</span></li><li><code>CO-problem</code><span>: MIP</span></li><li><code>ML-type</code><span>: RL (Imitation Learning)</span></li><li><code>Component</code><span>: /</span></li><li><code>Innovation</code><span>: This paper proposes </span><u><span>the first successful ML framework for variable selection in MIP</span></u><span>.</span></li><li><code>Link</code><span>: </span><a href='https://www.aaai.org/ocs/index.php/AAAI/AAAI16/paper/viewPDFInterstitial/12514/11657'><span>paper</span></a></li></ul></li><li><p><strong><span>Learning to Run Heuristics in Tree Search</span></strong></p><ul><li><code>Publication</code><span>: IJCAI 2017</span></li><li><code>CO-problem</code><span>: MIP</span></li><li><code>ML-type</code><span>: SL</span></li><li><code>Component</code><span>: classifier</span></li><li><code>Innovation</code><span>: Central to this approach is the </span><u><span>use of Machine Learning (ML) for predicting whether a heuristic will succeed at a given node</span></u><span>.</span></li><li><code>Link</code><span>: </span><a href='https://arxiv.org/abs/1803.10150'><span>arXiv</span></a></li></ul></li><li><p><strong><span>Improving Optimization Bounds using Machine Learning: Decision Diagrams meet Deep Reinforcement Learning</span></strong></p><ul><li><code>Publication</code><span>: AAAI 2019</span></li><li><code>CO-problem</code><span>: MIS, MAXCUT</span></li><li><code>ML-type</code><span>: RL (Q-learning)</span></li><li><code>Component</code><span>: /</span></li><li><code>Innovation</code><span>: This paper proposes an innovative and generic approach based on deep reinforcement learning for </span><u><span>obtaining an ordering for tightening the bounds</span></u><span> obtained with </span><u><span>relaxed and restricted DDs (decision diagrams)</span></u><span>.</span></li><li><code>Link</code><span>: </span><a href='https://arxiv.org/abs/1809.03359'><span>arXiv</span></a></li><li><img src="C:\Users\Gemini向光性\AppData\Roaming\Typora\typora-user-images\image-20210816182155426.png" referrerpolicy="no-referrer" alt="image-20210816182155426"></li></ul></li><li><p><strong><span>Exact Combinatorial Optimization with Graph Convolutional Neural Networks</span></strong></p><ul><li><code>Publication</code><span>: NeurIPS 2019</span></li><li><code>CO-problem</code><span>: MIIP</span></li><li><code>ML-type</code><span>: RL (Imitation learning)</span></li><li><code>Component</code><span>: GNN (GCN)</span></li><li><code>Innovation</code><span>: This paper proposes a </span><u><span>new graph convolutional neural network</span></u><span> model for learning branch-and-bound variable selection policies, which </span><u><span>leverages the natural variable-constraint bipartite graph representation of mixed-integer linear programs</span></u><span>.</span></li><li><code>Link</code><span>: </span><a href='https://arxiv.org/abs/1906.01629'><span>arXiv</span></a></li><li><img src="C:\Users\Gemini向光性\AppData\Roaming\Typora\typora-user-images\image-20210816134100224.png" referrerpolicy="no-referrer" alt="image-20210816134100224"></li></ul></li><li><p><strong><span>Combining Reinforcement Learning and Constraint Programming for Combinatorial Optimization</span></strong></p><ul><li><code>Publication</code><span>: AAAI 2021</span></li><li><code>CO-problem</code><span>: TSP, Portfolio Optimization Problem</span></li><li><code>ML-type</code><span>: RL (DQN, PPO)</span></li><li><code>Component</code><span>: GNN (GAT), Set Transformer</span></li><li><code>Innovation</code><span>: This paper propose a general and hybrid approach, based on DRL and CP (Constraint Programming), for solving combinatorial optimization problems. The core of this approach is </span><u><span>based on a dynamic programming formulation, that acts as a bridge between both techniques</span></u><span>.</span></li><li><code>Link</code><span>: </span><a href='https://arxiv.org/abs/2006.01610'><span>arXiv</span></a></li><li><img src="C:\Users\Gemini向光性\AppData\Roaming\Typora\typora-user-images\image-20210816155601272.png" referrerpolicy="no-referrer" alt="image-20210816155601272"></li></ul></li><li><p><strong><span>Solving Mixed Integer Programs Using Neural Networks</span></strong></p><ul><li><p><code>Publication</code><span>: arXiv 2021</span></p></li><li><p><code>CO-problem</code><span>: MIP</span></p></li><li><p><code>ML-type</code><span>: RL (Imitation Learning)</span></p></li><li><p><code>Component</code><span>: GNN (Bipartite graph)</span></p></li><li><p><code>Innovation</code><span>: </span><u><span>Neural Diving + Neural Branching</span></u></p><ul><li><span>Neural Diving learns a deep neural network to generate multiple partial assignments for its integer variables, and the resulting smaller MIPs for un-assigned variables are solved with SCIP to construct high quality joint assignments.</span></li><li><span>Neural Branching learns a deep neural network to make variable selection decisions in branch-and-bound to bound the objective value gap with a small tree.</span></li></ul></li><li><p><code>Link</code><span>: </span><a href='https://arxiv.org/abs/2012.13349'><span>arXiv</span></a></p></li><li><p><img src="C:\Users\Gemini向光性\AppData\Roaming\Typora\typora-user-images\image-20210816161449504.png" referrerpolicy="no-referrer" alt="image-20210816161449504"></p></li></ul></li></ol><h2 id='appendix'><span>Appendix</span></h2><h3 id='template'><span>Template</span></h3><ol start='' ><li><hr /><ul><li><code>Publication</code><span>: </span></li><li><code>CO-problem</code><span>: </span></li><li><code>ML-type</code><span>: </span></li><li><code>Component</code><span>: </span></li><li><code>Innovation</code><span>: </span></li><li><code>Link</code><span>: </span><a href=''><span>arXiv</span></a>
+<span>-</span></li></ul></li><li><hr /><ul><li><code>Publication</code><span>: </span></li><li><code>CO-problem</code><span>: </span></li><li><code>Link</code><span>: </span><a href=''><span>arXiv</span></a></li></ul></li></ol><h3 id='to-be-classified'><span>To Be Classified</span></h3><ol start='' ><li><p><strong><span>Reinforcement Learning for (Mixed) Integer Programming: Smart Feasibility Pump</span></strong></p><ul><li><code>Publication</code><span>: ICML 2021 (Workshop)</span></li><li><code>CO-problem</code><span>: MIP</span></li><li><code>Link</code><span>: </span><a href='https://arxiv.org/pdf/2102.09663.pdf'><span>arXiv</span></a></li></ul></li><li><p><strong><span>Learning Local Search Heuristics for Boolean Satisfiability</span></strong></p><ul><li><code>Publication</code><span>: NeurIPS 2019</span></li><li><code>CO-problem</code><span>: SAT</span></li><li><code>Link</code><span>: </span><a href='https://papers.nips.cc/paper/2019/hash/12e59a33dea1bf0630f46edfe13d6ea2-Abstract.html'><span>paper</span></a></li></ul></li><li><p><strong><span>Reinforcement Learning on Job Shop Scheduling Problems Using Graph Networks</span></strong></p><ul><li><code>Publication</code><span>: arXiv 2020</span></li><li><code>CO-problem</code><span>: JSSP</span></li><li><code>Link</code><span>: </span><a href='https://arxiv.org/abs/2009.03836'><span>arXiv</span></a></li></ul></li><li><p><strong><span>A Generalized Reinforcement Learning Algorithm for Online 3D Bin-Packing</span></strong></p><ul><li><code>Publication</code><span>: AAAI 2020 (Workshop)</span></li><li><code>CO-problem</code><span>: 3D-BPP</span></li><li><code>Link</code><span>: </span><a href='https://arxiv.org/abs/2007.00463'><span>arXiv</span></a></li></ul></li><li><p><strong><span>A Reinforcement Learning Approach to Job-shop Scheduling</span></strong><span> </span></p><ul><li><code>Publication</code><span>: IJCAI 2020</span></li><li><code>CO-problem</code><span>: JSSP</span></li><li><code>Link</code><span>: </span><a href='https://www.ijcai.org/Proceedings/95-2/Papers/013.pdf'><span>paper</span></a></li></ul></li><li><p><strong><span>A Reinforcement Learning Environment For Job-Shop Scheduling</span></strong><span> </span></p><ul><li><code>Publication</code><span>: arXiv 2021</span></li><li><code>CO-problem</code><span>: JSSP</span></li><li><code>Link</code><span>: </span><a href='https://arxiv.org/abs/2104.03760'><span>arXiv</span></a></li></ul></li><li><p><strong><span>Improving Optimization Bounds Using Machine Learning ~ Decision Diagrams Meet Deep Reinforcement Learning</span></strong></p><ul><li><code>Publication</code><span>: AAAI 2019</span></li><li><code>CO-problem</code><span>: MIS, MAXCUT</span></li><li><code>Link</code><span>: </span><a href='https://arxiv.org/abs/1809.03359'><span>arXiv</span></a></li></ul></li><li><p><strong><span>Online 3D Bin Packing with Constrained Deep Reinforcement Learning</span></strong></p><ul><li><code>Publication</code><span>: AAAI 2021</span></li><li><code>CO-problem</code><span>: 3D-BPP</span></li><li><code>Link</code><span>: </span><a href='https://arxiv.org/abs/2006.14978'><span>arXiv</span></a></li></ul></li><li><p><strong><span>A Data-Driven Approach for Multi-level Packing Problems in Manufacturing Industry</span></strong></p><ul><li><code>Publication</code><span>: KDD 2019</span></li><li><code>CO-problem</code><span>: 3D-BPP</span></li><li><code>Link</code><span>: </span><a href='https://dl.acm.org/doi/10.1145/3292500.3330708'><span>ACM DL</span></a></li></ul></li><li><p><strong><span>Solving a New 3D Bin Packing Problem with Deep Reinforcement Learning Method</span></strong></p><ul><li><code>Publication</code><span>: arXiv 2017</span></li><li><code>CO-problem</code><span>: 3D-BPP</span></li><li><code>Link</code><span>: </span><a href='https://arxiv.org/abs/1708.05930'><span>arXiv</span></a></li></ul></li><li><p><strong><span>Meta-Learning-based Deep Reinforcement Learning for Multiobjective Optimization Problems</span></strong></p><ul><li><code>Publication</code><span>: arXiv 2017</span></li><li><code>CO-problem</code><span>: TSP</span></li><li><code>Link</code><span>: </span><a href='https://arxiv.org/abs/2105.02741'><span>arXiv</span></a></li></ul></li><li><p><strong><span>Dynamic Job-Shop Scheduling Using Reinforcement Learning Agents</span></strong></p><ul><li><code>Publication</code><span>: ROBOT AUTON SYST 2000</span></li><li><code>CO-problem</code><span>: JSSP</span></li><li><code>Link</code><span>: </span><a href='https://www.researchgate.net/publication/280532592_Dynamic_job_shop_scheduling_using_intelligent_agents'><span>paper</span></a></li></ul></li></ol></div></div>
+</body>
+</html>
