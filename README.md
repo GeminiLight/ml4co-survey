@@ -54,3 +54,7 @@ It's inevitable to have omissions or errors during the discussion for the limita
 ![homepage](image/ml4co-survey_page_01.png)
 
 ![content](image/ml4co-survey_page_02.png)
+
+## Acknowledgement
+
+- [Awesome Machine Learning for Combinatorial Optimization Resources](https://github.com/Thinklab-SJTU/awesome-ml4co)
