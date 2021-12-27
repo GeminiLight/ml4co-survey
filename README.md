@@ -36,14 +36,14 @@ It's inevitable to have omissions or errors during the discussion for the limita
 - **RNN**: Recurrent Neural Network *(Including LSTM, GRU)*
 - **CNN**: Convolutional Neural Network
 - **GNN**: Graph Neural Network *(Including Graph Embedding, GE)*
-  - **Attention** *(Including Self-Attention)*
+- **Attention** *(Including Self-Attention)*
 - **Transformer**
 
 ## Notes
 
 ......
 
-## [Slide](slide\ml4co-silde-geminilight-2021.09.03.pdf) [58 pages]
+## [Slide](slide/ml4co-silde-geminilight-2021.09.03.pdf) [58 pages]
 
 ![homepage](image/ml4co-silde-geminilight-2021.09.03_page_01.png)
 
