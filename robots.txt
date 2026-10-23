@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://tianfuwang.tech/ml4co-survey/sitemap.xml
+Sitemap: https://tianfu.wang/ml4co-survey/sitemap.xml
